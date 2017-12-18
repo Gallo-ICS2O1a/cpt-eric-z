@@ -1,17 +1,21 @@
 grid_layout = []
-for blocks in range(22):
-    grid_layout.append([0]*10)
-    x = 150
-    y = 50
+for blocks in range(18):
+    grid_layout.append([0]*24)
+x = 150
+y = 50
+row = 24
+column = 18
 print(grid_layout)
 def setup():
     size(600,700)
 def draw():
     global x
     global y
+    global row
+    global column
     background(255)
     rect(150,50,450,600)
-    for grid_blocks in grid_layout:
-        rect(x, y, 45 , 27.272727272727)
-        x = x + 45
-        y = y + 27.272727272
+    
+    for i, horizontal in enumerate(grid_layout):
+        for j, vertical in enumerate(horizontal):
+            rect(x + i*25, y + j*25, 25, 25)
