@@ -19,3 +19,47 @@ def draw():
     for i, horizontal in enumerate(grid_layout):
         for j, vertical in enumerate(horizontal):
             rect(x + i*25, y + j*25, 25, 25)
+
+
+
+
+
+
+
+
+fallingblock = PVector(random(150, 600), 50)
+grid_layout = []
+for blocks in range(18):
+    grid_layout.append([0]*24)
+    
+grid_layout[1][5] = 1
+
+x = 150
+y = 50
+row = 24
+column = 18
+print(grid_layout)
+def setup():
+    size(600,700)
+def draw():
+    global x
+    global y
+    global row
+    global column
+    background(255)
+    rect(150,50,450,600)
+
+    fill(255)
+    for i, horizontal in enumerate(grid_layout):
+        for j, vertical in enumerate(horizontal):
+            
+            rect(x + i*25, y + j*25, 25, 25)
+     
+    
+    fill(0)
+    rect(fallingblock.x, fallingblock.y, 50, 50)
+    #for grid_blocks in grid_layout:
+    #rect(x, y, 25, 25)
+ 
+        
+   
