@@ -1,0 +1,7 @@
+for row in range(24)
+  if grid_layout[row][0] == 1 and grid_layout[row][1] == 1 and grid_layout[row][2] == 1 and grid_layout[row][3] == 1 and grid_layout[row][4] == 1 and grid_layout[row][5] == 1 and grid_layout[row][6] == 1 and grid_layout[row][7] == 1 and grid_layout[row][8] == 1 and grid_layout[row][9] == 1 and grid_layout[row][10] == 1 and grid_layout[row][11] == 1 and grid_layout[row][12] == 1 and grid_layout[row][13] == 1 and grid_layout[row][14] == 1 and grid_layout[row][15] == 1 and grid_layout[row][16] == 1 and grid_layout[row][17] == 1 and grid_layout[row][18] == 1:
+    clearline = True
+  if clearline == True: 
+    grid_layout.pop(row-1)
+    #append a row of zeros at top of array
+    #ask mr gallo how to do it
