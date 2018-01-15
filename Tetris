@@ -110,7 +110,14 @@ def shape_fall():
         for row in range(row_pos + grid_dimensions, row_pos, -1):
             for col in range(locationx, locationx + grid_dimensions):
                 if fallingshape[row - row_pos - 1][ col-locationx] == 1:
-                    landed[row][col] = grid_layout[row][col]  #NEED TO!!!!!!!!!!!!!!!!!!!!!!!!!!deep_copy      
+                    for row in range(row_pos + grid_dimensions, row_pos, -1):
+                        for col in range(locationx, locationx + grid_dimensions):
+                            if grid_layout[row][col] == 1:
+                                landed[row][col] = grid_layout[row][col]
+                                grid_layout[row][col] = 0
+                    #landed[row][col] = grid_layout[row][col]  #NEED TO!!!!!!!!!!!!!!!!!!!!!!!!!!deep_copy
+                    
+      
     
     
     
