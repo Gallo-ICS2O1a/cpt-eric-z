@@ -4,7 +4,7 @@ for blocks in range(24):
     grid_layout.append([0]*18)
 landed = []
 for blocks in range(24):
-    grid_layout.append([0]*18)
+    landed.append([0]*18)
 locationx = int(random(0,15))
 row_pos = 0
 gridcheckindex = 1
@@ -59,7 +59,7 @@ def draw():
             grid_dimensions = 3
             gridcheckindex = 1
             
-    
+    posof_1()
 
     shape_fall()
     
@@ -68,6 +68,10 @@ def draw():
     draw_shape()
     
     clear_grid()
+    
+    draw_landed()
+    
+
     
     
 
@@ -93,12 +97,22 @@ def shape_fall():
     global row_pos
     global locationx
     global grid_dimensions
+    global can_movedown
     
     print( "before fall" )
-    for row in range(row_pos + grid_dimensions, row_pos, -1):
-        for col in range(locationx, locationx + grid_dimensions):
-            grid_layout[row+1][col] = fallingshape[row - row_pos - 1][ col-locationx]
-    row_pos = row_pos + 1        
+    if can_movedown == True:
+        for row in range(row_pos + grid_dimensions, row_pos, -1):
+            for col in range(locationx, locationx + grid_dimensions):
+                if fallingshape[row - row_pos - 1][ col-locationx] == 1:
+                    grid_layout[row+1][col] = fallingshape[row - row_pos - 1][ col-locationx]
+        row_pos = row_pos + 1
+    else:
+        for row in range(row_pos + grid_dimensions, row_pos, -1):
+            for col in range(locationx, locationx + grid_dimensions):
+                if fallingshape[row - row_pos - 1][ col-locationx] == 1:
+                    landed[row][col] = grid_layout[row][col]  #NEED TO!!!!!!!!!!!!!!!!!!!!!!!!!!deep_copy      
+    
+    
     
         
     print( "after fall" )
@@ -159,32 +173,42 @@ def clear_grid():
             
 
 def posof_1():
-    for row in range(grid_dimensions, 0, -1):
-        for col in range(grid_dimensions):
-            if fallingshape[row-1][col] == 1:
-                can_movedown = False
+    global can_movedown
+    
+    for row in range(row_pos, row_pos + grid_dimensions):
+        for col in range(locationx, locationx + grid_dimensions):
+            if row + 1 <= 23:
+                if landed[row+1][col] == 0:
+                    can_movedown = True
+                else:
+                    can_movedown = False
+                    break
             else:
-                can_movedown = True
-        if can_movedown == True:
-            for row in range(grid_dimensions - 1 , 0, -1):
-                for col in range(grid_dimensions):
-                    fallingshape[row][col] = fallingshape[row - 1][col]
+                can_movedown = False
+                break
+            
+                
+
+    
+    
+        #if can_movedown == True:
+            #for row in range(grid_dimensions - 1 , 0, -1):
+                #for col in range(grid_dimensions):
+                    #fallingshape[row][col] = fallingshape[row - 1][col]
                     
                 
                 
 def collision_detection():
-for column in range(locationx, locationx + grid_dimensions):
-    if landed[row_pos + grid_dimensions][locationx] = 0:
-        bigColl = True
-            
-            
+    for column in range(locationx, locationx + grid_dimensions):
+        if landed[row_pos + grid_dimensions][locationx] == 0:
+            bigColl = True
+
+def remove_lines():
+    for row in range(24):
+        if grid_layout[row][0] == 1 and grid_layout[row][1] == 1 and grid_layout[row][2] == 1 and grid_layout[row][3] == 1 and grid_layout[row][4] == 1 and grid_layout[row][5] == 1 and grid_layout[row][6] == 1 and grid_layout[row][7] == 1 and grid_layout[row][8] == 1 and grid_layout[row][9] == 1 and grid_layout[row][10] == 1 and grid_layout[row][11] == 1 and grid_layout[row][12] == 1 and grid_layout[row][13] == 1 and grid_layout[row][14] == 1 and grid_layout[row][15] == 1 and grid_layout[row][16] == 1 and grid_layout[row][17] == 1 and grid_layout[row][18] == 1:
+            clearline = True
+        if clearline == True: 
+            grid_layout.pop(row-1)
+    #append a row of zeros at top of array
+    #ask mr gallo how to do it
     
-    
-    
-    
-    
-                
-    
- 
-        
-   
