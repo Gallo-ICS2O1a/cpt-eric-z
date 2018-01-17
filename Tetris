@@ -13,6 +13,7 @@ has_coll = False
 bigCol = True
 finished_fall = False
 can_movedown = True
+breakout = False
 fallingshaperef = []
 fallingshape_i = [[0,0,0,0],[1,1,1,1],[0,0,0,0],[0,0,0,0]]
 fallingshape_t = [[0,1,0],[1,1,1],[0,0,0]]
@@ -100,22 +101,24 @@ def shape_fall():
     global grid_dimensions
     global can_movedown
     
-    print( "before fall" )
+    #print( "before fall" )
+    print ("shape fall ",can_movedown)
     if can_movedown == True:
         for row in range(row_pos + grid_dimensions, row_pos, -1):
             for col in range(locationx, locationx + grid_dimensions):
-                if fallingshape[row - row_pos - 1][ col-locationx] == 1:
+                #if fallingshape[row - row_pos - 1][ col-locationx] == 1:
                     grid_layout[row+1][col] = fallingshape[row - row_pos - 1][ col-locationx]
         row_pos = row_pos + 1
     else:
         for row in range(row_pos + grid_dimensions, row_pos, -1):
             for col in range(locationx, locationx + grid_dimensions):
-                if fallingshape[row - row_pos - 1][ col-locationx] == 1:
-                    for row in range(row_pos + grid_dimensions, row_pos, -1):
-                        for col in range(locationx, locationx + grid_dimensions):
-                            if grid_layout[row][col] == 1:
-                                landed[row][col] = grid_layout[row][col]
-                                grid_layout[row][col] = 0
+                #if fallingshape[row - row_pos - 1][ col-locationx] == 1:
+                    #for row in range(row_pos + grid_dimensions, row_pos, -1):
+                        #for col in range(locationx, locationx + grid_dimensions):
+                if grid_layout[row][col] == 1:
+                    landed[row][col] = grid_layout[row][col]
+                    grid_layout[row][col] = 0
+                    print landed
                 
                                 
                         
@@ -127,7 +130,7 @@ def shape_fall():
     
     
         
-    print( "after fall" )
+    #print( "after fall" )
 
 
 def shape_rotate():
@@ -188,20 +191,25 @@ def clear_grid():
 
 def posof_1():
     global can_movedown
-    
+    global breakout
     for row in range(row_pos, row_pos + grid_dimensions):
         for col in range(locationx, locationx + grid_dimensions):
-            if row + 1 <= 23:
+            if row + 1 <= 22:
                 if grid_layout[row][col]== 1:
                     if landed[row+1][col] == 0:
                         can_movedown = True
                     else:
                         can_movedown = False
+                        breakout = True
                         break
             else:
                 can_movedown = False
+                breakout = True
                 break
-    
+        
+        if breakout == True:
+            break
+    print("col detect ",can_movedown)
                 
 
    
@@ -221,11 +229,8 @@ def collision_detection():
 
 def remove_lines():
     for row in range(24):
-        if grid_layout[row][0] == 1 and grid_layout[row][1] == 1 and grid_layout[row][2] == 1 and grid_layout[row][3] == 1 and grid_layout[row][4] == 1 and grid_layout[row][5] == 1 and grid_layout[row][6] == 1 and grid_layout[row][7] == 1 and grid_layout[row][8] == 1 and grid_layout[row][9] == 1 and grid_layout[row][10] == 1 and grid_layout[row][11] == 1 and grid_layout[row][12] == 1 and grid_layout[row][13] == 1 and grid_layout[row][14] == 1 and grid_layout[row][15] == 1 and grid_layout[row][16] == 1 and grid_layout[row][17] == 1 and grid_layout[row][18] == 1:
+        if landed[row][0] == 1 and landed[row][1] == 1 and landed[row][2] == 1 and landed[row][3] == 1 and landed[row][4] == 1 and landed[row][5] == 1 and landed[row][6] == 1 and landed[row][7] == 1 and landed[row][8] == 1 and landed[row][9] == 1 and landed[row][10] == 1 and landed[row][11] == 1 and landed[row][12] == 1 and landed[row][13] == 1 and landed[row][14] == 1 and landed[row][15] == 1 and landed[row][16] == 1 and landed[row][17] == 1 and landed[row][18] == 1:
             clearline = True
         if clearline == True: 
-            grid_layout.pop(row-1)
+            landed.pop(row-1)
     #append a row of zeros at top of array
-    #ask mr gallo how to do it
-    
-    
