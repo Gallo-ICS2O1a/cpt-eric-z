@@ -1,0 +1,14 @@
+if piece_gen == 0:
+        init_piece = [[0,0,0,0],[1,1,1,1],[0,0,0,0],[0,0,0,0]]
+    elif piece_gen == 1:
+        init_piece = [[0,1,0],[1,1,1],[0,0,0]]
+    elif piece_gen == 2:
+        init_piece = [[0,0,1],[1,1,1],[0,0,0]]
+    elif piece_gen == 3:
+        init_piece = [[1,0,0],[1,1,1],[0,0,0]]
+    elif piece_gen == 4:
+        init_piece = [[0,1,1],[1,1,0],[0,0,0]]
+    elif piece_gen == 5:
+        init_piece = [[1,1,0],[0,1,1],[0,0,0]]
+    elif piece_gen == 6:
+        init_piece = [[1,1,0],[1,1,0],[0,0,0]]
