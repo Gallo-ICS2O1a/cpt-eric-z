@@ -62,12 +62,12 @@ def draw():
             grid_dimensions = 3
             gridcheckindex = 1
             
-    #posof_1()
+    posof_1()
     
 
     shape_fall()
     
-    posof_1()
+    #posof_1()
   
     draw_landed()
     draw_shape()
@@ -217,9 +217,11 @@ def clear_grid():
 def posof_1():
     global can_movedown
     global breakout
+    print("ran")
     for row in range(row_pos, row_pos + grid_dimensions):
         for col in range(locationx, locationx + grid_dimensions):
             if row + 1 <= 22:
+                print("ran2")
                 if grid_layout[row][col]== 1:
                     if landed[row+1][col] == 0:
                         can_movedown = True
