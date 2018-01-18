@@ -1,0 +1,105 @@
+grid_layout1 = []
+grid_layout2 = []
+for blocks in range(3):
+    grid_layout1.append([0]*3)
+for blocks in range(3):
+    grid_layout2.append([0]*3)
+win = False
+player = "player1"
+
+
+def setup():
+    size(900, 900)
+    
+def draw():
+    background(255)
+    fill(0)
+    rect(290, 0, 20, 900)
+    rect(590, 0, 20, 900)
+    rect(0, 290, 900, 20)
+    rect(0, 590, 900, 20)
+    
+def check_win1():
+    if grid_layout1[0][0] == 1 and grid_layout1[1][0] == 1 and grid_layout1[2][0]==1:
+        win = True
+    elif grid_layout1[0][1] == 1 and grid_layout1[1][1] == 1 and grid_layout1[2][1]==1:
+        win = True
+    elif grid_layout1[0][2] == 1 and grid_layout1[1][2] == 1 and grid_layout1[2][2]==1:
+        win = True
+    elif grid_layout1[0][0] == 1 and grid_layout1[0][1] == 1 and grid_layout1[0][2]==1:
+        win = True
+    elif grid_layout1[1][0] == 1 and grid_layout1[1][1] == 1 and grid_layout1[1][2]==1:
+        win = True
+    elif grid_layout1[2][0] == 1 and grid_layout1[2][1] == 1 and grid_layout1[2][1]==1:
+        win = True
+    elif grid_layout1[0][0] == 1 and grid_layout1[1][1] == 1 and grid_layout1[2][2]==1:
+        win = True
+    elif grid_layout1[0][2] == 1 and grid_layout1[1][1] == 1 and grid_layout1[2][0]==1:
+        win = True
+def check_win2():
+    if grid_layout2[0][0] == 1 and grid_layout2[1][0] == 1 and grid_layout2[2][0]==1:
+        win = True
+    elif grid_layout2[0][1] == 1 and grid_layout2[1][1] == 1 and grid_layout2[2][1]==1:
+        win = True
+    elif grid_layout2[0][2] == 1 and grid_layout2[1][2] == 1 and grid_layout2[2][2]==1:
+        win = True
+    elif grid_layout2[0][0] == 1 and grid_layout2[0][1] == 1 and grid_layout2[0][2]==1:
+        win = True
+    elif grid_layout2[1][0] == 1 and grid_layout2[1][1] == 1 and grid_layout2[1][2]==1:
+        win = True
+    elif grid_layout2[2][0] == 1 and grid_layout2[2][1] == 1 and grid_layout2[2][1]==1:
+        win = True
+    elif grid_layout2[0][0] == 1 and grid_layout2[1][1] == 1 and grid_layout2[2][2]==1:
+        win = True
+    elif grid_layout2[0][2] == 1 and grid_layout2[1][1] == 1 and grid_layout2[2][0]==1:
+        win = True
+
+def mousePressed():
+    if mouseX < 300 and mouseY < 300:
+        if player == player1:
+            grid_layout1[0][0] = 1
+        if player == player2:
+            grid_layout[0][0] = 1
+    elif mouseX < 300 and mouseY > 300 and mouseY < 600:
+        if player == player1:
+            grid_layout1[1][0] = 1
+        if player == player2:
+            grid_layout[1][0] = 1
+    elif mouseX < 300 and mouseY > 600:
+        if player == player1:
+            grid_layout1[2][0] = 1
+        if player == player2:
+            grid_layout[2][0] = 1
+    elif mouseX > 300 and mouseX < 600 and mouseY < 300:
+        if player == player1:
+            grid_layout1[1][0] = 1
+        if player == player2:
+            grid_layout[1][0] = 1
+    elif mouseX > 300 and mouseX < 600 and mouseY > 300 and mouseY < 600:
+        if player == player1:
+            grid_layout1[1][1] = 1
+        if player == player2:
+            grid_layout[1][1] = 1
+    elif mouseX > 300 and mouseX < 600 and mouseY > 600:
+        if player == player1:
+            grid_layout1[1][2] = 1
+        if player == player2:
+            grid_layout[1][2] = 1 
+    elif mouseX > 600 and mouseY < 300:
+        if player == player1:
+            grid_layout1[0][2] = 1
+        if player == player2:
+            grid_layout[0][2] = 1
+    elif mouseX > 600 and mouseY > 300 and mouseY < 600:
+        if player == player1:
+            grid_layout1[1][2] = 1
+        if player == player2:
+            grid_layout[1][2] = 1
+    elif mouseX > 600 and mouseY > 600:
+        if player == player1:
+            grid_layout1[2][2] = 1
+        if player == player2:
+            grid_layout[2][2] = 1
+            
+#def choose_block():
+    
