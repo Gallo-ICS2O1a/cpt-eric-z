@@ -1,4 +1,4 @@
-import copy
+import copy 
 grid_layout = []
 for blocks in range(24):
     grid_layout.append([0]*18)
@@ -7,7 +7,7 @@ for blocks in range(24):
     landed.append([0]*18)
 locationx = int(random(0,15))
 row_pos = 0
-gridcheckindex = 1
+gridcheckindex = 0
 grid_dimensions = 3
 has_coll = False
 bigCol = True
@@ -18,10 +18,11 @@ fallingshaperef = []
 fallingshape_i = [[0,0,0,0],[1,1,1,1],[0,0,0,0],[0,0,0,0]]
 fallingshape_t = [[0,1,0],[1,1,1],[0,0,0]]
 fallingshape_j = [[0,0,1],[1,1,1],[0,0,0]]
-fallingshape = [[1,0,0],[1,1,1],[0,0,0]]
+fallingshape_l = [[1,0,0],[1,1,1],[0,0,0]]
 fallingshape_s = [[0,1,1],[1,1,0],[0,0,0]]
 fallingshape_z = [[1,1,0],[0,1,1],[0,0,0]]
 fallingshape_o = [[1,1,0],[1,1,0],[0,0,0]]
+choices = [fallingshape_i, fallingshape_t, fallingshape_j, fallingshape_l, fallingshape_s, fallingshape_z, fallingshape_o]
 fallingshape_loc = [row_pos, locationx]
 for row in range(23,24):
     for column in range(18):
@@ -45,7 +46,6 @@ def draw():
     global column
     global row_pos
     global locationx
-    global columnindex
     global fallingshape
     global fallingshaperef
     global gridcheckindex
@@ -53,18 +53,21 @@ def draw():
     background(255)
     
     if gridcheckindex == 0:
+        rand_shape()
+        print("complete2")
         if fallingshape == [[0,0,0,0],[1,1,1,1],[0,0,0,0],[0,0,0,0]]:
             grid_dimensions = 4
             gridcheckindex = 1
-        elif gridcheckindex == 1:
+        else:
             grid_dimensions = 3
             gridcheckindex = 1
             
-    posof_1()
+    #posof_1()
     
 
     shape_fall()
     
+    posof_1()
   
     draw_landed()
     draw_shape()
@@ -102,6 +105,7 @@ def shape_fall():
     global locationx
     global grid_dimensions
     global can_movedown
+    global gridcheckindex
     
     #print( "before fall" )
     print ("shape fall ",can_movedown)
@@ -122,7 +126,12 @@ def shape_fall():
                 if grid_layout[row][col] == 1:
                     landed[row][col] = grid_layout[row][col]
                     grid_layout[row][col] = 0
-        print landed
+                    
+        
+        gridcheckindex = 0
+        row_pos = 0
+        can_movedown = True
+        print("complete")
                 
                                 
                         
@@ -179,11 +188,12 @@ def draw_shape():
     global grid_layout
     for i, horizontal in enumerate(grid_layout):
         for j, cell_value in enumerate(horizontal):
-            if cell_value == 0:
-                fill(255)
+            #if cell_value == 0:
+                #fill(255)
             if cell_value == 1:
                 fill(0)
-            rect(x + j*25, y + i*25, 25, 25)
+                rect(x + j*25, y + i*25, 25, 25)
+            #draw shape based on where in graph
             
 def draw_landed():
     global x
@@ -249,3 +259,14 @@ def remove_lines():
         if clearline == True: 
             landed.pop(row-1)
     #append a row of zeros at top of array
+    
+    
+def rand_shape():
+    import random
+    global fallingshape
+    global choices
+    #piece_gen = int(random(0,7))
+    init_piece = random.choice(choices)
+    fallingshape = [row[:] for row in init_piece]
+    print("complete3")
+    print(fallingshape)
