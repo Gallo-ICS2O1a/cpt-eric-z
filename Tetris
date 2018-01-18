@@ -25,7 +25,7 @@ fallingshape_o = [[1,1,0],[1,1,0],[0,0,0]]
 fallingshape_loc = [row_pos, locationx]
 for row in range(23,24):
     for column in range(18):
-        grid_layout[row][column] = 1      
+        landed[row][column] = 1      
 x = 150
 y = 50
 #row = 24
@@ -66,12 +66,14 @@ def draw():
     shape_fall()
     
   
-
+    draw_landed()
     draw_shape()
     
-    clear_grid()
+    #clear_grid()
     
-    draw_landed()
+    
+    
+    #draw_landed()
     
 
     
@@ -106,8 +108,10 @@ def shape_fall():
     if can_movedown == True:
         for row in range(row_pos + grid_dimensions, row_pos, -1):
             for col in range(locationx, locationx + grid_dimensions):
+                #grid_layout[row][col] = fallingshape[row-row_pos-1][col-locationx]
                 #if fallingshape[row - row_pos - 1][ col-locationx] == 1:
-                    grid_layout[row+1][col] = fallingshape[row - row_pos - 1][ col-locationx]
+                grid_layout[row+1][col] = fallingshape[row - row_pos - 1][ col-locationx]
+                grid_layout[row][col] = 0
         row_pos = row_pos + 1
     else:
         for row in range(row_pos + grid_dimensions, row_pos, -1):
@@ -118,7 +122,7 @@ def shape_fall():
                 if grid_layout[row][col] == 1:
                     landed[row][col] = grid_layout[row][col]
                     grid_layout[row][col] = 0
-                    print landed
+        print landed
                 
                                 
                         
@@ -149,13 +153,20 @@ def shape_translateR():
     #         grid_layout[row][col+1] = fallingshape[row - row_pos][col-locationx-1]
     #         grid_layout[row][col] = 0
     if locationx != 18 - grid_dimensions:
-        locationx = locationx + 1 
+        locationx = locationx + 1
+        for row in range(row_pos + grid_dimensions):
+            grid_layout[row][locationx-1] = 0
+        #grid_layout[row_pos][locationx-1] = 0
+        #grid_layout[row_pos+1][locationx-1] = 0
+        #grid_layout[row_pos+2][locationx-1] = 0
     print( "afer R" )
 
 def shape_translateL():
     global locationx
     if locationx != 0:
         locationx = locationx - 1
+        for row in range(row_pos + grid_dimensions):
+            grid_layout[row][locationx+grid_dimensions] = 0
     
 def shape_translateD():
     global row_pos
@@ -175,12 +186,16 @@ def draw_shape():
             rect(x + j*25, y + i*25, 25, 25)
             
 def draw_landed():
+    global x
+    global y
+    global landed
     for i, horizontal in enumerate(landed):
         for j, cell_value in enumerate(horizontal):
             if cell_value == 0:
                 fill(255)
             if cell_value == 1:
                 fill(0)
+            rect(x + j*25, y + i*25, 25, 25)
             
 
 def clear_grid():
