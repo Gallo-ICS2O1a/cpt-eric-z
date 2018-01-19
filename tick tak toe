@@ -1,25 +1,43 @@
 grid_layout1 = []
 grid_layout2 = []
+grid_layout = []
 for blocks in range(3):
     grid_layout1.append([0]*3)
 for blocks in range(3):
     grid_layout2.append([0]*3)
+for blocks in range(3):
+    grid_layout.append([0]*3)
 win = False
-player = "player1"
+player = 1
 
 
 def setup():
-    size(900, 900)
+    size(600, 700)
     
 def draw():
+    global win
     background(255)
     fill(0)
-    rect(290, 0, 20, 900)
-    rect(590, 0, 20, 900)
+    rect(190, 100, 20, 900)
+    rect(390, 100, 20, 900)
     rect(0, 290, 900, 20)
-    rect(0, 590, 900, 20)
+    rect(0, 490, 900, 20)
+    
+    make_board()
+    
+    if player == 1:
+        check_win1()
+    if player == 2:
+        check_win2()
+    if win == True:
+        print("win")
+    print("grid_layout1", grid_layout1)
+    print("grid_layout2", grid_layout2)
+    print("grid_layout", grid_layout)
     
 def check_win1():
+    global grid_layout1
+    global win
     if grid_layout1[0][0] == 1 and grid_layout1[1][0] == 1 and grid_layout1[2][0]==1:
         win = True
     elif grid_layout1[0][1] == 1 and grid_layout1[1][1] == 1 and grid_layout1[2][1]==1:
@@ -37,6 +55,8 @@ def check_win1():
     elif grid_layout1[0][2] == 1 and grid_layout1[1][1] == 1 and grid_layout1[2][0]==1:
         win = True
 def check_win2():
+    global grid_layout2
+    global win
     if grid_layout2[0][0] == 1 and grid_layout2[1][0] == 1 and grid_layout2[2][0]==1:
         win = True
     elif grid_layout2[0][1] == 1 and grid_layout2[1][1] == 1 and grid_layout2[2][1]==1:
@@ -55,51 +75,114 @@ def check_win2():
         win = True
 
 def mousePressed():
-    if mouseX < 300 and mouseY < 300:
-        if player == player1:
-            grid_layout1[0][0] = 1
-        if player == player2:
-            grid_layout[0][0] = 1
-    elif mouseX < 300 and mouseY > 300 and mouseY < 600:
-        if player == player1:
-            grid_layout1[1][0] = 1
-        if player == player2:
-            grid_layout[1][0] = 1
-    elif mouseX < 300 and mouseY > 600:
-        if player == player1:
-            grid_layout1[2][0] = 1
-        if player == player2:
-            grid_layout[2][0] = 1
-    elif mouseX > 300 and mouseX < 600 and mouseY < 300:
-        if player == player1:
-            grid_layout1[1][0] = 1
-        if player == player2:
-            grid_layout[1][0] = 1
-    elif mouseX > 300 and mouseX < 600 and mouseY > 300 and mouseY < 600:
-        if player == player1:
-            grid_layout1[1][1] = 1
-        if player == player2:
-            grid_layout[1][1] = 1
-    elif mouseX > 300 and mouseX < 600 and mouseY > 600:
-        if player == player1:
-            grid_layout1[1][2] = 1
-        if player == player2:
-            grid_layout[1][2] = 1 
-    elif mouseX > 600 and mouseY < 300:
-        if player == player1:
-            grid_layout1[0][2] = 1
-        if player == player2:
-            grid_layout[0][2] = 1
-    elif mouseX > 600 and mouseY > 300 and mouseY < 600:
-        if player == player1:
-            grid_layout1[1][2] = 1
-        if player == player2:
-            grid_layout[1][2] = 1
-    elif mouseX > 600 and mouseY > 600:
-        if player == player1:
-            grid_layout1[2][2] = 1
-        if player == player2:
-            grid_layout[2][2] = 1
+    global player
+    global grid_layout
+    global grid_layout1
+    global grid_layout2
+    
+
+    if mouseX < 200 and mouseY < 300 and mouseY > 100:
+        if grid_layout[0][0] == 1:
+            print("can't place there")
+        else:
+            
+            ellipse(100, 200, 50, 50)
+            if player == 1:
+                grid_layout1[0][0] = 1
+            elif player == 2:
+                grid_layout2[0][0] = 1
+    elif mouseX < 200 and mouseY > 300 and mouseY < 500:
+        if grid_layout[1][0] == 1:
+            print("can't place there")
+        else:
+            ellipse(100, 400, 50, 50)
+            if player == 1:
+                grid_layout1[1][0] = 1
+            elif player == 2:
+                grid_layout2[1][0] = 1
+    elif mouseX < 200 and mouseY > 500:
+        if grid_layout[2][0] == 1:
+            print("can't place there")
+        else:
+            ellipse(100, 600, 50, 50)
+            if player == 1:
+                grid_layout1[2][0] = 1
+            elif player == 2:
+                grid_layout2[2][0] = 1
+    elif mouseX > 200 and mouseX < 400 and mouseY < 300 and mouseY > 100:
+        if grid_layout[1][0] == 1:
+            print("can't place there")
+        else:
+            ellipse(300, 200, 50, 50)
+            if player == 1:
+                grid_layout1[0][1] = 1
+            elif player == 2:
+                grid_layout2[0][1] = 1
+    elif mouseX > 200 and mouseX < 400 and mouseY > 300 and mouseY < 500:
+        if grid_layout[1][1] == 1:
+            print("can't place there")
+        else:
+            ellipse(300, 400, 50, 50)
+            if player == 1:
+                grid_layout1[1][1] = 1
+            elif player == 2:
+                grid_layout2[1][1] = 1
+    elif mouseX > 200 and mouseX < 400 and mouseY > 500:
+        if grid_layout[1][2] == 1:
+            print("can't place there")
+        else:
+            ellipse(300, 600, 50, 50)
+            if player == 1:
+                grid_layout1[1][2] = 1
+            elif player == 2:
+                grid_layout2[1][2] = 1 
+    elif mouseX > 400 and mouseY < 300 and mouseY > 100:
+        if grid_layout[0][2] == 1:
+            print("can't place there")
+        else:
+            ellipse(500, 200, 50, 50)
+            if player == 1:
+                grid_layout1[0][2] = 1
+            elif player == 2:
+                grid_layout2[0][2] = 1
+    elif mouseX > 400 and mouseY > 300 and mouseY < 500:
+        if grid_layout[1][2] == 1:
+            print("can't place there")
+        else:
+            ellipse(500, 400, 50, 50)
+            if player == 1:
+                grid_layout1[1][2] = 1
+            elif player == 2:
+                grid_layout2[1][2] = 1
+    elif mouseX > 400 and mouseY > 500:
+        if grid_layout[2][2] == 1:
+            print("can't place there")
+        else:
+            ellipse(500, 600, 50, 50)
+            if player == 1:
+                grid_layout1[2][2] = 1
+            elif player == 2:
+                grid_layout2[2][2] = 1
+    
+    if player == 1:
+        player = 2
+    else:
+        player = 1
             
 #def choose_block():
-    
+def make_board():
+    global grid_layout
+    global grid_layout1
+    global grid_layout2    
+    for row in range(3):
+        for col in range(3):
+            if grid_layout1[row][col] == 1:
+                grid_layout[row][col] = grid_layout1[row][col]
+                fill(0)
+                ellipse((col*200+100),(row*200+200), 50, 50)
+            elif grid_layout2[row][col] == 1:
+                grid_layout[row][col] = grid_layout2[row][col]
+                fill(43, 98, 143)
+                ellipse((col*200+100),(row*200+200), 50, 50)
+            
+
