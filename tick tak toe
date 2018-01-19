@@ -25,9 +25,9 @@ def draw():
     
     make_board()
     
-    if player == 1:
-        check_win1()
     if player == 2:
+        check_win1()
+    if player == 1:
         check_win2()
     if win == True:
         print("win")
@@ -133,9 +133,9 @@ def mousePressed():
         else:
             ellipse(300, 600, 50, 50)
             if player == 1:
-                grid_layout1[1][2] = 1
+                grid_layout1[2][1] = 1
             elif player == 2:
-                grid_layout2[1][2] = 1 
+                grid_layout2[2][1] = 1 
     elif mouseX > 400 and mouseY < 300 and mouseY > 100:
         if grid_layout[0][2] == 1:
             print("can't place there")
