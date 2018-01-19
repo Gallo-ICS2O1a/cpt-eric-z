@@ -16,6 +16,7 @@ def setup():
     
 def draw():
     global win
+    global player
     background(178, 24, 67)
     fill(225)
     rect(180, 100, 40, 900)
@@ -37,16 +38,18 @@ def draw():
     if player == 1:
         check_win2()
     if win == True:
-        # if player == 2:
-        #     player = 1
-        # else:
-        #     player = 2
-        # fill(15, 140, 178)
-        # rect(0,0,600,100)
-        # textSize(32)
-        # fill(255)
-        # text("Player", player , "Has Won", 0, 0)
+        if player == 2:
+            player = 1
+        else:
+            player = 2
+        fill(15, 140, 178)
+        rect(0,0,600,100)
+        textSize(32)
+        fill(255)
+        text("Player "+ str(player)+" Has Won", 10, 50)
         print("win")
+        
+        #ask gallo, how to make draw loop stop
     print("grid_layout1", grid_layout1)
     print("grid_layout2", grid_layout2)
     print("grid_layout", grid_layout)
