@@ -16,12 +16,19 @@ def setup():
     
 def draw():
     global win
-    background(255)
-    fill(0)
+    background(178, 24, 67)
+    fill(225)
+    rect(180, 100, 40, 900)
+    rect(380, 100, 40, 900)
+    rect(0, 280, 900, 40)
+    rect(0, 480, 900, 40)
+    fill(255, 8, 78)
     rect(190, 100, 20, 900)
     rect(390, 100, 20, 900)
     rect(0, 290, 900, 20)
     rect(0, 490, 900, 20)
+    fill(15, 140, 178)
+    rect(0,0,600,100)
     
     make_board()
     
@@ -30,6 +37,15 @@ def draw():
     if player == 1:
         check_win2()
     if win == True:
+        # if player == 2:
+        #     player = 1
+        # else:
+        #     player = 2
+        # fill(15, 140, 178)
+        # rect(0,0,600,100)
+        # textSize(32)
+        # fill(255)
+        # text("Player", player , "Has Won", 0, 0)
         print("win")
     print("grid_layout1", grid_layout1)
     print("grid_layout2", grid_layout2)
@@ -110,7 +126,7 @@ def mousePressed():
             elif player == 2:
                 grid_layout2[2][0] = 1
     elif mouseX > 200 and mouseX < 400 and mouseY < 300 and mouseY > 100:
-        if grid_layout[1][0] == 1:
+        if grid_layout[0][1] == 1:
             print("can't place there")
         else:
             ellipse(300, 200, 50, 50)
@@ -128,7 +144,7 @@ def mousePressed():
             elif player == 2:
                 grid_layout2[1][1] = 1
     elif mouseX > 200 and mouseX < 400 and mouseY > 500:
-        if grid_layout[1][2] == 1:
+        if grid_layout[2][1] == 1:
             print("can't place there")
         else:
             ellipse(300, 600, 50, 50)
@@ -178,9 +194,12 @@ def make_board():
         for col in range(3):
             if grid_layout1[row][col] == 1:
                 grid_layout[row][col] = grid_layout1[row][col]
-                fill(0)
-                ellipse((col*200+100),(row*200+200), 50, 50)
+                fill(255,239,34)
+                ellipse((col*200+100),(row*200+200), 70, 70)
             elif grid_layout2[row][col] == 1:
                 grid_layout[row][col] = grid_layout2[row][col]
-                fill(43, 98, 143)
-                ellipse((col*200+100),(row*200+200), 50, 50)
+                fill(27, 162, 204)
+                ellipse((col*200+100),(row*200+200), 70, 70)
+            
+
+
