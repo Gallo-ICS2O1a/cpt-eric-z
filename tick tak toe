@@ -9,7 +9,10 @@ for blocks in range(3):
 for blocks in range(3):
     grid_layout.append([0]*3)
 win = False
+tie = False
 game_end = False
+breakout = False
+can_place = True
 player = 1
 
 
@@ -20,6 +23,7 @@ def draw():
     global game_end
     global win
     global player
+    global tie
     background(178, 24, 67)
     fill(225)
     rect(180, 100, 40, 900)
@@ -34,15 +38,20 @@ def draw():
     fill(15, 140, 178)
     rect(0,0,600,100)
     
-    
+    print(game_end)
+    print(grid_layout1)
+    print(grid_layout2)
+    print(grid_layout)
     make_board()
     
     if game_end == False:
         if player == 2:
             check_win1()
+            check_tie()
         if player == 1:
             check_win2()
-        if win == False:
+            check_tie()
+        if win == False and tie == False:
             fill(15, 140, 178)
             rect(0,0,600,100)
             textSize(32)
@@ -55,34 +64,50 @@ def draw():
             else:
                 player = 2
             game_end = True
+            if win == True:
+                fill(15, 140, 178)
+                rect(0,0,600,100)
+                textSize(32)
+                fill(255)
+                text("Player "+ str(player)+" Has Won", 10, 50)
+                print("win")
+            elif tie == True:
+                fill(15, 140, 178)
+                rect(0,0,600,100)
+                textSize(32)
+                fill(255)
+                text("Game is a tie", 10, 50)
+                print("tie")
+                
+            
+    elif game_end == True:
+        if win == True:
             fill(15, 140, 178)
             rect(0,0,600,100)
             textSize(32)
             fill(255)
             text("Player "+ str(player)+" Has Won", 10, 50)
             print("win")
-            
-    elif game_end == True:
+            fill(15, 140, 178)
+        elif tie == True:
+            fill(15, 140, 178)
+            rect(0,0,600,100)
+            textSize(32)
+            fill(255)
+            text("Game is a tie", 10, 50)
+            print("tie")
         fill(15, 140, 178)
-        rect(0,0,600,100)
+        rect(225, 325, 150, 150)
+        fill(255)
+        textSize(25)
+        text("Press space", 232, 370)
         textSize(32)
-        fill(255)
-        text("Player "+ str(player)+" Has Won", 10, 50)
-        print("win")
-        fill(15, 140, 178)
-        rect(200, 300, 200, 200)
-        fill(255)
-        text("Press space", 215, 350)
-        text("To play", 250, 400)
+        text("To play", 250, 410)
         text("Again", 260, 450)
         
     textSize(32)
     fill(255)
     text("Tic Tac Toe", 400, 50)    
-        #ask gallo, how to make draw loop stop
-    print("grid_layout1", grid_layout1)
-    print("grid_layout2", grid_layout2)
-    print("grid_layout", grid_layout)
     
 def check_win1():
     global grid_layout1
@@ -128,10 +153,12 @@ def mousePressed():
     global grid_layout
     global grid_layout1
     global grid_layout2
+    global can_place
     
 
     if mouseX < 200 and mouseY < 300 and mouseY > 100:
         if grid_layout[0][0] == 1:
+            can_place = False
             print("can't place there")
         else:
             
@@ -142,6 +169,7 @@ def mousePressed():
                 grid_layout2[0][0] = 1
     elif mouseX < 200 and mouseY > 300 and mouseY < 500:
         if grid_layout[1][0] == 1:
+            can_place = False
             print("can't place there")
         else:
             ellipse(100, 400, 50, 50)
@@ -151,6 +179,7 @@ def mousePressed():
                 grid_layout2[1][0] = 1
     elif mouseX < 200 and mouseY > 500:
         if grid_layout[2][0] == 1:
+            can_place = False
             print("can't place there")
         else:
             ellipse(100, 600, 50, 50)
@@ -160,6 +189,7 @@ def mousePressed():
                 grid_layout2[2][0] = 1
     elif mouseX > 200 and mouseX < 400 and mouseY < 300 and mouseY > 100:
         if grid_layout[0][1] == 1:
+            can_place = False
             print("can't place there")
         else:
             ellipse(300, 200, 50, 50)
@@ -169,6 +199,7 @@ def mousePressed():
                 grid_layout2[0][1] = 1
     elif mouseX > 200 and mouseX < 400 and mouseY > 300 and mouseY < 500:
         if grid_layout[1][1] == 1:
+            can_place = False
             print("can't place there")
         else:
             ellipse(300, 400, 50, 50)
@@ -178,6 +209,7 @@ def mousePressed():
                 grid_layout2[1][1] = 1
     elif mouseX > 200 and mouseX < 400 and mouseY > 500:
         if grid_layout[2][1] == 1:
+            can_place = False
             print("can't place there")
         else:
             ellipse(300, 600, 50, 50)
@@ -187,6 +219,7 @@ def mousePressed():
                 grid_layout2[2][1] = 1 
     elif mouseX > 400 and mouseY < 300 and mouseY > 100:
         if grid_layout[0][2] == 1:
+            can_place = False
             print("can't place there")
         else:
             ellipse(500, 200, 50, 50)
@@ -196,6 +229,7 @@ def mousePressed():
                 grid_layout2[0][2] = 1
     elif mouseX > 400 and mouseY > 300 and mouseY < 500:
         if grid_layout[1][2] == 1:
+            can_place = False
             print("can't place there")
         else:
             ellipse(500, 400, 50, 50)
@@ -205,6 +239,7 @@ def mousePressed():
                 grid_layout2[1][2] = 1
     elif mouseX > 400 and mouseY > 500:
         if grid_layout[2][2] == 1:
+            can_place = False
             print("can't place there")
         else:
             ellipse(500, 600, 50, 50)
@@ -213,10 +248,13 @@ def mousePressed():
             elif player == 2:
                 grid_layout2[2][2] = 1
     
-    if player == 1:
-        player = 2
+    if can_place == True:
+        if player == 1:
+            player = 2
+        else:
+            player = 1
     else:
-        player = 1
+        can_place = True
             
 #def choose_block():
 def make_board():
@@ -235,14 +273,38 @@ def make_board():
                 ellipse((col*200+100),(row*200+200), 70, 70)
 
 def init():
+    global game_end
+    global win
+    global tie
+    global breakout
     for row in range(3):
-        for row in range(3):
+        for col in range(3):
             grid_layout[row][col] = 0
             grid_layout1[row][col] = 0
             grid_layout2[row][col] = 0
-            game_end = False
+    win = False
+    tie = False
+    breakout = False
+    game_end = False
 
 def keyPressed():
     if key == CODED:
-        if keyCode == SPACE:
+        if keyCode == DOWN:
             init()
+            
+def check_tie():
+    global tie
+    global game_end
+    global win
+    global breakout
+    if win == False:
+        for row in range(3):
+            for col in range(3):
+                if grid_layout[row][col] == 1:
+                    tie = True
+                else:
+                    tie = False
+                    breakout = True
+                    break
+            if breakout == True:
+                break
