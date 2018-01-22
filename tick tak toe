@@ -297,15 +297,12 @@ def check_tie():
     global win
     global breakout
     if win == False:
+        move_counter = 0
         breakout = True
         for row in range(3):
             for col in range(3):
                 if grid_layout[row][col] == 1:
+                    move_counter = move_counter + 1
+                if move_counter >= 9:
                     tie = True
-                else:
-                    tie = False
-                    breakout = True
-                    break
-            if breakout == True:
-                break
             #can use a move counter, if win is false, and 9 moves have been made tie = true
