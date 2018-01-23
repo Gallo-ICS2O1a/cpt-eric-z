@@ -1,10 +1,10 @@
-grid_layout1 = []
-grid_layout2 = []
+grid_layoutp1 = []
+grid_layoutp2 = []
 grid_layout = []
 for blocks in range(3):
-    grid_layout1.append([0]*3)
+    grid_layoutp1.append([0]*3)
 for blocks in range(3):
-    grid_layout2.append([0]*3)
+    grid_layoutp2.append([0]*3)
 for blocks in range(3):
     grid_layout.append([0]*3)
 win = False
@@ -39,8 +39,8 @@ def draw():
     rect(0, 0, 600, 100)
     
     print(game_end)
-    print(grid_layout1)
-    print(grid_layout2)
+    print(grid_layoutp1)
+    print(grid_layoutp2)
     print(grid_layout)
     make_board()
     
@@ -110,68 +110,68 @@ def draw():
 
 
 def check_win1():
-    global grid_layout1
+    global grid_layoutp1
     global win
-    if grid_layout1[0][0] == 1 and grid_layout1[1][0] == 1 and \
-    grid_layout1[2][0] == 1:
+    if grid_layoutp1[0][0] == 1 and grid_layoutp1[1][0] == 1 and \
+    grid_layoutp1[2][0] == 1:
         win = True
-    elif grid_layout1[0][1] == 1 and grid_layout1[1][1] == 1 and \
-    grid_layout1[2][1] == 1:
+    elif grid_layoutp1[0][1] == 1 and grid_layoutp1[1][1] == 1 and \
+    grid_layoutp1[2][1] == 1:
         win = True
-    elif grid_layout1[0][2] == 1 and grid_layout1[1][2] == 1 and \
-    grid_layout1[2][2] == 1:
+    elif grid_layoutp1[0][2] == 1 and grid_layoutp1[1][2] == 1 and \
+    grid_layoutp1[2][2] == 1:
         win = True
-    elif grid_layout1[0][0] == 1 and grid_layout1[0][1] == 1 and \
-    grid_layout1[0][2] == 1:
+    elif grid_layoutp1[0][0] == 1 and grid_layoutp1[0][1] == 1 and \
+    grid_layoutp1[0][2] == 1:
         win = True
-    elif grid_layout1[1][0] == 1 and grid_layout1[1][1] == 1 and \
-    grid_layout1[1][2] == 1:
+    elif grid_layoutp1[1][0] == 1 and grid_layoutp1[1][1] == 1 and \
+    grid_layoutp1[1][2] == 1:
         win = True
-    elif grid_layout1[2][0] == 1 and grid_layout1[2][1] == 1 and \
-    grid_layout1[2][2] == 1:
+    elif grid_layoutp1[2][0] == 1 and grid_layoutp1[2][1] == 1 and \
+    grid_layoutp1[2][2] == 1:
         win = True
-    elif grid_layout1[0][0] == 1 and grid_layout1[1][1] == 1 and \
-    grid_layout1[2][2] == 1:
+    elif grid_layoutp1[0][0] == 1 and grid_layoutp1[1][1] == 1 and \
+    grid_layoutp1[2][2] == 1:
         win = True
-    elif grid_layout1[0][2] == 1 and grid_layout1[1][1] == 1 and \
-    grid_layout1[2][0] == 1:
+    elif grid_layoutp1[0][2] == 1 and grid_layoutp1[1][1] == 1 and \
+    grid_layoutp1[2][0] == 1:
         win = True
 
 
 def check_win2():
-    global grid_layout2
+    global grid_layoutp2
     global win
-    if grid_layout2[0][0] == 1 and grid_layout2[1][0] == 1 and \
-    grid_layout2[2][0] == 1:
+    if grid_layoutp2[0][0] == 1 and grid_layoutp2[1][0] == 1 and \
+    grid_layoutp2[2][0] == 1:
         win = True
-    elif grid_layout2[0][1] == 1 and grid_layout2[1][1] == 1 and \
-    grid_layout2[2][1] == 1:
+    elif grid_layoutp2[0][1] == 1 and grid_layoutp2[1][1] == 1 and \
+    grid_layoutp2[2][1] == 1:
         win = True
-    elif grid_layout2[0][2] == 1 and grid_layout2[1][2] == 1 and \
-    grid_layout2[2][2] == 1:
+    elif grid_layoutp2[0][2] == 1 and grid_layoutp2[1][2] == 1 and \
+    grid_layoutp2[2][2] == 1:
         win = True
-    elif grid_layout2[0][0] == 1 and grid_layout2[0][1] == 1 and \
-    grid_layout2[0][2] == 1:
+    elif grid_layoutp2[0][0] == 1 and grid_layoutp2[0][1] == 1 and \
+    grid_layoutp2[0][2] == 1:
         win = True
-    elif grid_layout2[1][0] == 1 and grid_layout2[1][1] == 1 and \
-    grid_layout2[1][2] == 1:
+    elif grid_layoutp2[1][0] == 1 and grid_layoutp2[1][1] == 1 and \
+    grid_layoutp2[1][2] == 1:
         win = True
-    elif grid_layout2[2][0] == 1 and grid_layout2[2][1] == 1 and \
-    grid_layout2[2][2] == 1:
+    elif grid_layoutp2[2][0] == 1 and grid_layoutp2[2][1] == 1 and \
+    grid_layoutp2[2][2] == 1:
         win = True
-    elif grid_layout2[0][0] == 1 and grid_layout2[1][1] == 1 and \
-    grid_layout2[2][2] == 1:
+    elif grid_layoutp2[0][0] == 1 and grid_layoutp2[1][1] == 1 and \
+    grid_layoutp2[2][2] == 1:
         win = True
-    elif grid_layout2[0][2] == 1 and grid_layout2[1][1] == 1 and \
-    grid_layout2[2][0] == 1:
+    elif grid_layoutp2[0][2] == 1 and grid_layoutp2[1][1] == 1 and \
+    grid_layoutp2[2][0] == 1:
         win = True
 
 
 def mousePressed():
     global player
     global grid_layout
-    global grid_layout1
-    global grid_layout2
+    global grid_layoutp1
+    global grid_layoutp2
     global can_place
     
     if game_end is False:
@@ -183,9 +183,9 @@ def mousePressed():
             else:
                 ellipse(100, 200, 50, 50)
                 if player == 1:
-                    grid_layout1[0][0] = 1
+                    grid_layoutp1[0][0] = 1
                 elif player == 2:
-                    grid_layout2[0][0] = 1
+                    grid_layoutp2[0][0] = 1
         elif mouseX < 200 and mouseY > 300 and mouseY < 500:
             if grid_layout[1][0] == 1:
                 can_place = False
@@ -193,9 +193,9 @@ def mousePressed():
             else:
                 ellipse(100, 400, 50, 50)
                 if player == 1:
-                    grid_layout1[1][0] = 1
+                    grid_layoutp1[1][0] = 1
                 elif player == 2:
-                    grid_layout2[1][0] = 1
+                    grid_layoutp2[1][0] = 1
         elif mouseX < 200 and mouseY > 500:
             if grid_layout[2][0] == 1:
                 can_place = False
@@ -203,9 +203,9 @@ def mousePressed():
             else:
                 ellipse(100, 600, 50, 50)
                 if player == 1:
-                    grid_layout1[2][0] = 1
+                    grid_layoutp1[2][0] = 1
                 elif player == 2:
-                    grid_layout2[2][0] = 1
+                    grid_layoutp2[2][0] = 1
         elif mouseX > 200 and mouseX < 400 and mouseY < 300 and mouseY > 100:
             if grid_layout[0][1] == 1:
                 can_place = False
@@ -213,9 +213,9 @@ def mousePressed():
             else:
                 ellipse(300, 200, 50, 50)
                 if player == 1:
-                    grid_layout1[0][1] = 1
+                    grid_layoutp1[0][1] = 1
                 elif player == 2:
-                    grid_layout2[0][1] = 1
+                    grid_layoutp2[0][1] = 1
         elif mouseX > 200 and mouseX < 400 and mouseY > 300 and mouseY < 500:
             if grid_layout[1][1] == 1:
                 can_place = False
@@ -223,9 +223,9 @@ def mousePressed():
             else:
                 ellipse(300, 400, 50, 50)
                 if player == 1:
-                    grid_layout1[1][1] = 1
+                    grid_layoutp1[1][1] = 1
                 elif player == 2:
-                    grid_layout2[1][1] = 1
+                    grid_layoutp2[1][1] = 1
         elif mouseX > 200 and mouseX < 400 and mouseY > 500:
             if grid_layout[2][1] == 1:
                 can_place = False
@@ -233,9 +233,9 @@ def mousePressed():
             else:
                 ellipse(300, 600, 50, 50)
                 if player == 1:
-                    grid_layout1[2][1] = 1
+                    grid_layoutp1[2][1] = 1
                 elif player == 2:
-                    grid_layout2[2][1] = 1 
+                    grid_layoutp2[2][1] = 1 
         elif mouseX > 400 and mouseY < 300 and mouseY > 100:
             if grid_layout[0][2] == 1:
                 can_place = False
@@ -243,9 +243,9 @@ def mousePressed():
             else:
                 ellipse(500, 200, 50, 50)
                 if player == 1:
-                    grid_layout1[0][2] = 1
+                    grid_layoutp1[0][2] = 1
                 elif player == 2:
-                    grid_layout2[0][2] = 1
+                    grid_layoutp2[0][2] = 1
         elif mouseX > 400 and mouseY > 300 and mouseY < 500:
             if grid_layout[1][2] == 1:
                 can_place = False
@@ -253,9 +253,9 @@ def mousePressed():
             else:
                 ellipse(500, 400, 50, 50)
                 if player == 1:
-                    grid_layout1[1][2] = 1
+                    grid_layoutp1[1][2] = 1
                 elif player == 2:
-                    grid_layout2[1][2] = 1
+                    grid_layoutp2[1][2] = 1
         elif mouseX > 400 and mouseY > 500:
             if grid_layout[2][2] == 1:
                 can_place = False
@@ -263,9 +263,9 @@ def mousePressed():
             else:
                 ellipse(500, 600, 50, 50)
                 if player == 1:
-                    grid_layout1[2][2] = 1
+                    grid_layoutp1[2][2] = 1
                 elif player == 2:
-                    grid_layout2[2][2] = 1
+                    grid_layoutp2[2][2] = 1
         
         if can_place is True:
             if player == 1:
@@ -278,16 +278,16 @@ def mousePressed():
 
 def make_board():
     global grid_layout
-    global grid_layout1
-    global grid_layout2    
+    global grid_layoutp1
+    global grid_layoutp2    
     for row in range(3):
         for col in range(3):
-            if grid_layout1[row][col] == 1:
-                grid_layout[row][col] = grid_layout1[row][col]
+            if grid_layoutp1[row][col] == 1:
+                grid_layout[row][col] = grid_layoutp1[row][col]
                 fill(255, 239, 34)
                 ellipse((col*200+100), (row*200+200), 70, 70)
-            elif grid_layout2[row][col] == 1:
-                grid_layout[row][col] = grid_layout2[row][col]
+            elif grid_layoutp2[row][col] == 1:
+                grid_layout[row][col] = grid_layoutp2[row][col]
                 fill(27, 162, 204)
                 ellipse((col*200+100), (row*200+200), 70, 70)
 
@@ -300,8 +300,8 @@ def init():
     for row in range(3):
         for col in range(3):
             grid_layout[row][col] = 0
-            grid_layout1[row][col] = 0
-            grid_layout2[row][col] = 0
+            grid_layoutp1[row][col] = 0
+            grid_layoutp2[row][col] = 0
     win = False
     tie = False
     breakout = False
